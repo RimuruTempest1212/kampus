@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 27, 2024 at 07:14 AM
+-- Generation Time: Apr 27, 2024 at 01:48 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -78,13 +78,6 @@ CREATE TABLE `mahasiswa` (
   `no_hp` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `mahasiswa`
---
-
-INSERT INTO `mahasiswa` (`pk_mahasiswa_id`, `nim`, `nama_mahasiswa`, `jenis_kelamin`, `email`, `no_hp`) VALUES
-(11, '089636', 'aldi s', 'L', 'aldianfal3@gmail.com', '0895389072345');
-
 -- --------------------------------------------------------
 
 --
@@ -100,13 +93,6 @@ CREATE TABLE `pendaftaran` (
   `status_ajuan` enum('belum di verifikasi','Diverifikasi','lulus','gagal') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ipk` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `pendaftaran`
---
-
-INSERT INTO `pendaftaran` (`pk_pendaftaran_id`, `fk_mahasiswa_id`, `semester`, `berkas`, `fk_jenis_beasiswa_id`, `status_ajuan`, `ipk`) VALUES
-(31, 11, 2, '3a74f89b1860221ed7323855a48dd3e7.pdf', 1, 'lulus', 0);
 
 -- --------------------------------------------------------
 
@@ -140,7 +126,12 @@ INSERT INTO `transkrip_nilai` (`pk_nilai_id`, `nilai_semester1`, `nilai_semester
 (6, 80, 90, 90, 90, 90, 90, 90, 90, 0),
 (7, 123, 123, 123, 0, 0, 0, 0, 0, 0),
 (8, 232, 232, 232, 0, 0, 0, 0, 0, 0),
-(9, 1233, 12312, 12312, 0, 0, 0, 0, 0, 0);
+(9, 1233, 12312, 12312, 0, 0, 0, 0, 0, 0),
+(10, 0, 0, 0, 0, 0, 0, 0, 0, 12),
+(11, 0, 0, 0, 0, 0, 0, 0, 0, 13),
+(12, 0, 0, 0, 0, 0, 0, 0, 0, 14),
+(13, 223, 231, 3, 3123, 123, 133, 2133, 123, 15),
+(14, 121, 212, 12, 1212, 212, 121, 121, 121, 16);
 
 --
 -- Indexes for dumped tables
@@ -201,19 +192,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `pk_mahasiswa_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pk_mahasiswa_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `pk_pendaftaran_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `pk_pendaftaran_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `transkrip_nilai`
 --
 ALTER TABLE `transkrip_nilai`
-  MODIFY `pk_nilai_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pk_nilai_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -223,7 +214,7 @@ ALTER TABLE `transkrip_nilai`
 -- Constraints for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  ADD CONSTRAINT `pendaftaran_ibfk_1` FOREIGN KEY (`fk_mahasiswa_id`) REFERENCES `mahasiswa` (`pk_mahasiswa_id`),
+  ADD CONSTRAINT `pendaftaran_ibfk_1` FOREIGN KEY (`fk_mahasiswa_id`) REFERENCES `mahasiswa` (`pk_mahasiswa_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   ADD CONSTRAINT `pendaftaran_ibfk_2` FOREIGN KEY (`fk_jenis_beasiswa_id`) REFERENCES `jenis_beasiswa` (`pk_jenis_beasiswa_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `pendaftaran_ibfk_3` FOREIGN KEY (`semester`) REFERENCES `transkrip_nilai` (`pk_nilai_id`) ON UPDATE CASCADE;
 COMMIT;

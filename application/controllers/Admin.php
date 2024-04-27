@@ -63,19 +63,26 @@ class Admin extends CI_Controller {
     }
 
     function delete_mahasiswa()
-    {
-        $item_id = $this->input->post('id');
-        $delete = $this->db->delete('mahasiswa', array('pk_mahasiswa_id' => $item_id));
-        $delete_pendaftaran = $this->db->delete('pendaftaran', array('fk_mahasiswa_id' => $item_id));
-        if($delete){
-            $response = array('success' => true);
-        }else{
-            $response = array('success' => false);
-        }
-
-        header('Content-Type: application/json');
-        echo json_encode($response);
+{
+    $item_id = $this->input->post('id');
+    
+    // Hapus entri mahasiswa dari tabel mahasiswa
+    $this->db->where('pk_mahasiswa_id', $item_id);
+    $delete_mahasiswa = $this->db->delete('mahasiswa');
+    
+    // Hapus semua entri terkait dalam tabel pendaftaran berdasarkan fk_mahasiswa_id
+    $this->db->where('fk_mahasiswa_id', $item_id);
+    $delete_pendaftaran = $this->db->delete('pendaftaran');
+    
+    if($delete_mahasiswa && $delete_pendaftaran) {
+        $response = array('success' => true);
+    } else {
+        $response = array('success' => false);
     }
+    
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
 
     function aksi_mahasiswa($id = null){
 

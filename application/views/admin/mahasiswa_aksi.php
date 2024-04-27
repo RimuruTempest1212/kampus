@@ -189,69 +189,69 @@
 			<form id="form-tambah-mahasiswa" method="POST" action="<?= base_url('Admin/tambah_data')?>">
 				<div class="form-group">
 					<label for="nama">Nama</label>
-					<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+					<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required>
 				</div>
 				<div class="form-group">
 					<label for="nama">Nim</label>
-					<input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan nim">
+					<input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan nim"required>
 				</div>
 				<div class="form-group">
 					<label for="jenis_kelamin">Jenis Kelamin</label>
-					<select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+					<select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
 						<option value="L">Laki-laki</option>
 						<option value="P">Perempuan</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email">
+					<input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" required>
 				</div>
 				<div class="form-group">
 					<label for="no_hp">No Hp</label>
-					<input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan No Hp">
+					<input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan No Hp" required>
 				</div>
 				<div class="form-row mb-4">
 					<div class="col">
 						<label for="semester1">Semester 1</label>
 						<input type="text" class="form-control" id="semester1" name="semester1"
-							placeholder="IPK Semester 1">
+							placeholder="IPK Semester 1" required>
 					</div>
 					<div class="col">
 						<label for="semester2">Semester 2</label>
 						<input type="text" class="form-control" id="semester2" name="semester2"
-							placeholder="IPK Semester 2">
+							placeholder="IPK Semester 2" required>
 					</div>
 					<div class="col">
 						<label for="semester3">Semester 3</label>
 						<input type="text" class="form-control" id="semester3" name="semester3"
-							placeholder="IPK Semester 3">
+							placeholder="IPK Semester 3" required>
 					</div>
 					<div class="col">
 						<label for="semester4">Semester 4</label>
 						<input type="text" class="form-control" id="semester4" name="semester4"
-							placeholder="IPK Semester 4">
+							placeholder="IPK Semester 4" required>
 					</div>
 				</div>
 				<div class="form-row mb-4">
 					<div class="col">
 						<label for="semester5">Semester 5</label>
 						<input type="text" class="form-control" id="semester5" name="semester5"
-							placeholder="IPK Semester 5">
+							placeholder="IPK Semester 5" required> 
 					</div>
 					<div class="col">
 						<label for="semester6">Semester 6</label>
 						<input type="text" class="form-control" id="semester6" name="semester6"
-							placeholder="IPK Semester 6">
+							placeholder="IPK Semester 6" required>
 					</div>
 					<div class="col">
 						<label for="semester7">Semester 7</label>
 						<input type="text" class="form-control" id="semester7" name="semester7"
-							placeholder="IPK Semester 7">
+							placeholder="IPK Semester 7" required>
 					</div>
 					<div class="col">
 						<label for="semester8">Semester 8</label>
 						<input type="text" class="form-control" id="semester8" name="semester8"
-							placeholder="IPK Semester 8">
+							placeholder="IPK Semester 8" required> 
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Simpan</button>
