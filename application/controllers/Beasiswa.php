@@ -41,7 +41,7 @@ class Beasiswa extends CI_Controller {
             'hasil' => $hasil
         ];
 
-    
+        $this->load->view("template/header");
         $this->load->view('content/hasil', $data);
         $this->load->view('template/footer');
     }
