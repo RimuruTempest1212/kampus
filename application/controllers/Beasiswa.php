@@ -80,16 +80,28 @@ class Beasiswa extends CI_Controller {
         $semester       = $this->input->post('semester');
         $ipk            = $this->input->post('ipk');
         $jenis_beasiswa = $this->input->post('beasiswa');
-
+    
+        // Penanganan jika jenis beasiswa tidak sesuai
+        if ($jenis_beasiswa != '1' && $jenis_beasiswa != '3' && $jenis_beasiswa != '4' && $jenis_beasiswa != '5') {
+            $data = [
+                'caption' => 'error',
+                'message' => 'Jenis beasiswa tidak sesuai.',
+                'status'  => 'error'
+            ];
+            $this->session->set_flashdata('pesan', $data);
+            redirect('Beasiswa/daftar');
+            return; // Menghentikan eksekusi agar tidak melanjutkan proses
+        }
+    
         // Konfigurasi upload file
         $config['upload_path']   = './uploads/';
-        $config['allowed_types'] = 'pdf|jpg|zip';
+        $config['allowed_types'] = 'pdf|jpg|zip|png';
         $config['max_size']      = 5120; // 5 MB (dalam kilobita)
         $config['encrypt_name'] = TRUE;
-
+    
         // Inisialisasi library upload
         $this->load->library('upload', $config);
-
+    
         if (!$this->upload->do_upload('file')) {
             // Penanganan kesalahan jika upload gagal
             $error = $this->upload->display_errors();
@@ -98,13 +110,7 @@ class Beasiswa extends CI_Controller {
             // File berhasil diunggah, proses selanjutnya
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
-
-           
-            // $this->load->library('encryption');
-            // $file_contents = file_get_contents('./uploads/' . $file_name);
-            // $encrypted_file_contents = $this->encryption->encrypt($file_contents);
-            // file_put_contents('./uploads/' . $file_name, $encrypted_file_contents);
-
+    
             // Data yang akan disimpan ke database
             $data = [
                 'fk_mahasiswa_id'       => $mahasiswaid,
@@ -112,9 +118,9 @@ class Beasiswa extends CI_Controller {
                 'ipk'                   => $ipk,
                 'fk_jenis_beasiswa_id'  => $jenis_beasiswa,
                 'status_ajuan'          => "Belum di verifikasi",
-                'berkas'             => $file_name
+                'berkas'                => $file_name
             ];
-
+    
             // Panggil model atau metode untuk menyimpan data ke dalam database
             // cek juga apakah data sudah ada atau tidak
             $cek = $this->db->get_where('pendaftaran', array('fk_mahasiswa_id' => $mahasiswaid))->row_array();
@@ -132,12 +138,12 @@ class Beasiswa extends CI_Controller {
                     'status'  => 'error'
                 ];
             }
-
-			$this->session->set_flashdata('pesan', $data);
-
+    
+            $this->session->set_flashdata('pesan', $data);
             redirect('Beasiswa/daftar');
         }
     }
+    
 
     function validasi($pendaftaranid){
         $data = [
