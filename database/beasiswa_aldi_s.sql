@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 22, 2024 at 05:03 AM
+-- Generation Time: Apr 27, 2024 at 07:14 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -83,9 +83,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`pk_mahasiswa_id`, `nim`, `nama_mahasiswa`, `jenis_kelamin`, `email`, `no_hp`) VALUES
-(5, '0113', 'aldi', 'L', 'aldianfal3@gmail.com', '0895389072345'),
-(6, '0110', 'aldi s', 'L', 'aldisaputra@gmail.com', '0887789902134'),
-(8, '1122', 'Muhamad Aldi Saputra', 'L', 'aldisaputrawalker@gmail.com', '0895389072345');
+(11, '089636', 'aldi s', 'L', 'aldianfal3@gmail.com', '0895389072345');
 
 -- --------------------------------------------------------
 
@@ -97,11 +95,18 @@ CREATE TABLE `pendaftaran` (
   `pk_pendaftaran_id` int NOT NULL,
   `fk_mahasiswa_id` int NOT NULL,
   `semester` int NOT NULL,
-  `ipk` float NOT NULL,
   `berkas` varchar(200) NOT NULL,
   `fk_jenis_beasiswa_id` int NOT NULL,
-  `status_ajuan` enum('belum di verifikasi','Diverifikasi','lulus','gagal') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `status_ajuan` enum('belum di verifikasi','Diverifikasi','lulus','gagal') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ipk` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `pendaftaran`
+--
+
+INSERT INTO `pendaftaran` (`pk_pendaftaran_id`, `fk_mahasiswa_id`, `semester`, `berkas`, `fk_jenis_beasiswa_id`, `status_ajuan`, `ipk`) VALUES
+(31, 11, 2, '3a74f89b1860221ed7323855a48dd3e7.pdf', 1, 'lulus', 0);
 
 -- --------------------------------------------------------
 
@@ -111,7 +116,6 @@ CREATE TABLE `pendaftaran` (
 
 CREATE TABLE `transkrip_nilai` (
   `pk_nilai_id` int NOT NULL,
-  `fk_mahasiswa_id` int NOT NULL,
   `nilai_semester1` float NOT NULL,
   `nilai_semester2` float NOT NULL,
   `nilai_semester3` float NOT NULL,
@@ -119,20 +123,24 @@ CREATE TABLE `transkrip_nilai` (
   `nilai_semester5` int NOT NULL,
   `nilai_semester6` int NOT NULL,
   `nilai_semester7` int NOT NULL,
-  `nilai_semester8` int NOT NULL
+  `nilai_semester8` int NOT NULL,
+  `fk_mahasiswa_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `transkrip_nilai`
 --
 
-INSERT INTO `transkrip_nilai` (`pk_nilai_id`, `fk_mahasiswa_id`, `nilai_semester1`, `nilai_semester2`, `nilai_semester3`, `nilai_semester4`, `nilai_semester5`, `nilai_semester6`, `nilai_semester7`, `nilai_semester8`) VALUES
-(1, 1, 3.3, 3.3, 3.3, 0, 0, 0, 0, 0),
-(2, 2, 3.4, 4.4, 3.4, 0, 0, 0, 0, 0),
-(3, 3, 3.2, 3.2, 3.2, 0, 0, 0, 0, 0),
-(4, 5, 3.4, 4.4, 3.4, 0, 0, 0, 0, 0),
-(5, 6, 3.2, 4.4, 3.2, 0, 0, 0, 0, 0),
-(6, 8, 80, 90, 90, 90, 90, 90, 90, 90);
+INSERT INTO `transkrip_nilai` (`pk_nilai_id`, `nilai_semester1`, `nilai_semester2`, `nilai_semester3`, `nilai_semester4`, `nilai_semester5`, `nilai_semester6`, `nilai_semester7`, `nilai_semester8`, `fk_mahasiswa_id`) VALUES
+(1, 3.3, 3.3, 3.3, 0, 0, 0, 0, 0, 0),
+(2, 3.4, 4.4, 3.4, 0, 0, 0, 0, 0, 0),
+(3, 3.2, 3.2, 3.2, 0, 0, 0, 0, 0, 0),
+(4, 3.4, 4.4, 3.4, 0, 0, 0, 0, 0, 0),
+(5, 3.2, 4.4, 3.2, 0, 0, 0, 0, 0, 0),
+(6, 80, 90, 90, 90, 90, 90, 90, 90, 0),
+(7, 123, 123, 123, 0, 0, 0, 0, 0, 0),
+(8, 232, 232, 232, 0, 0, 0, 0, 0, 0),
+(9, 1233, 12312, 12312, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -161,13 +169,17 @@ ALTER TABLE `mahasiswa`
 -- Indexes for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  ADD PRIMARY KEY (`pk_pendaftaran_id`);
+  ADD PRIMARY KEY (`pk_pendaftaran_id`),
+  ADD KEY `fk_mahasiswa_id` (`fk_mahasiswa_id`),
+  ADD KEY `fk_jenis_beasiswa_id` (`fk_jenis_beasiswa_id`),
+  ADD KEY `semester` (`semester`);
 
 --
 -- Indexes for table `transkrip_nilai`
 --
 ALTER TABLE `transkrip_nilai`
-  ADD PRIMARY KEY (`pk_nilai_id`);
+  ADD PRIMARY KEY (`pk_nilai_id`),
+  ADD KEY `fk_mahasiswa_id` (`fk_mahasiswa_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -189,19 +201,31 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `pk_mahasiswa_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `pk_mahasiswa_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `pk_pendaftaran_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `pk_pendaftaran_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `transkrip_nilai`
 --
 ALTER TABLE `transkrip_nilai`
-  MODIFY `pk_nilai_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pk_nilai_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD CONSTRAINT `pendaftaran_ibfk_1` FOREIGN KEY (`fk_mahasiswa_id`) REFERENCES `mahasiswa` (`pk_mahasiswa_id`),
+  ADD CONSTRAINT `pendaftaran_ibfk_2` FOREIGN KEY (`fk_jenis_beasiswa_id`) REFERENCES `jenis_beasiswa` (`pk_jenis_beasiswa_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `pendaftaran_ibfk_3` FOREIGN KEY (`semester`) REFERENCES `transkrip_nilai` (`pk_nilai_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
