@@ -105,7 +105,14 @@ class Beasiswa extends CI_Controller {
         if (!$this->upload->do_upload('file')) {
             // Penanganan kesalahan jika upload gagal
             $error = $this->upload->display_errors();
-            echo $error;
+            $data = [
+                'caption' => 'error',
+                'message' => 'Type File Tidak Sesuai!',
+                'status'  => 'error'
+            ];
+            $this->session->set_flashdata('pesan', $data);
+            redirect('Beasiswa/daftar');
+            return;
         } else {
             // File berhasil diunggah, proses selanjutnya
             $upload_data = $this->upload->data();
@@ -120,7 +127,7 @@ class Beasiswa extends CI_Controller {
                 'status_ajuan'          => "Belum di verifikasi",
                 'berkas'                => $file_name
             ];
-    
+            
             // Panggil model atau metode untuk menyimpan data ke dalam database
             // cek juga apakah data sudah ada atau tidak
             $cek = $this->db->get_where('pendaftaran', array('fk_mahasiswa_id' => $mahasiswaid))->row_array();
@@ -143,6 +150,7 @@ class Beasiswa extends CI_Controller {
             redirect('Beasiswa/daftar');
         }
     }
+    
     
 
     function validasi($pendaftaranid){
