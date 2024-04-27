@@ -1,3 +1,8 @@
+Perkenalkan Nama Saya Muhamad Aldi Saputra Disini saya akan Demo Aplikasi berbasis web Dengan content Kampus Beasiswa
+
+Kampus Beasiswa adalah sebuah program atau event yang selalu di sediakan oleh kampus-kampus lainnya dengan menyediakan berbagai type beasiswa
+dan bisa di dapatkan oleh Murid-Murid yang Berfrestasi.
+
 apabila ada yang Error Jangan Ragu untuk Bertanya karena itu bisa membuat saya berkembang dalam program ini :) 
 
 Permasalahan 
