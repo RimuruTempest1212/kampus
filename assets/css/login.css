@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(../img/perpustakaan.jpg);
+    background-size: cover;
+    filter: brightness(70%);
+}
+.pl-3.text-danger,
+.text-danger {
+    color: red !important;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.alert-success {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #2ecc71;
+    border-radius: 5px;
+    color: #2ecc71;
+    background-color: #d4edda;
+    font-size: 14px;
+}
+
+/* If you want to add an icon to the success message, you can use FontAwesome or other icon libraries */
+.alert-danger::before {
+    content: '\2716'; /* Unicode character for a checkmark */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #f0f8f4;
+}
+
+.alert-danger {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f01f1f;
+    border-radius: 5px;
+    color: #f7f3f3;
+    background-color: #f32323;
+    font-size: 14px;
+}
+
+/* If you want to add an icon to the success message, you can use FontAwesome or other icon libraries */
+.alert-success::before {
+    content: '\2713'; /* Unicode character for a checkmark */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #2ecc71;
+}
+
+
+.container {
+    width: 100%;
+    display: flex;
+    max-width: 850px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgb(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.login {
+    width: 400px;
+    padding: 20px;
+}
+
+form {
+    width: 250px;
+    max-width: 400px;
+    margin: 0px auto;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+hr {
+    border-top: 2px solid #68ff2c;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+
+}
+
+.right img {
+    width: 450px;
+    height: 500px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+form label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+input {
+    width: 100%;
+    margin: 2px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 252px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: #68ff2c;
+}
+
+button:hover {
+    background: rgba(214, 86, 64, 1);
+}
+
+@media (max-width: 880px) {
+
+
+    .container {
+        width: 100%;
+        max-width: 750px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    form {
+        width: 300px;
+        margin: 20px;
+    }
+
+    .login {
+        width: 400px;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .right img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+}

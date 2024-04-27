@@ -1,0 +1,68 @@
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(../img/bg.png);
+    background-size: cover;
+    /* background-position: center; */
+    filter: brightness(100%);
+   
+
+}
+
+
+ul{
+    padding-left: 30px;
+    margin-bottom: 20px;
+    
+}
+.navbar-brand {
+    position: absolute;
+    margin-top: 40px;
+    display: block; /* Mengubah elemen menjadi block agar bisa menggunakan properti text-align */
+    width: 100%; /* Mengatur lebar agar teks tetap tengah */
+    text-align: center;
+    left: 10px;
+    padding-bottom: 30px; /*/* Mengatur jarak dari bagian kiri */
+    z-index: 1; /* Menentukan urutan tumpukan, agar tetap terlihat di atas latar belakang */
+}
+
+
+.container1 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 576px) {
+    .container1 {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .container1 {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .container1 {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container1 {
+        max-width: 1140px;
+    }
+}
+@media(min-width:500px){
+    .body{
+        max-width: 200px;
+    }
+}

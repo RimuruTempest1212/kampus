@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(../img/perpustakaan.jpg);
+    background-size: cover;
+    filter: brightness(70%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow flex items to wrap to the next line */
+    max-width: 500px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgb(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.text-danger pl-3{
+    color: red;
+}
+.text-danger{
+    color: red;
+}
+
+.registration {
+    width: 100%;
+    padding: 20px;
+    color: black;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+hr {
+    border-top: 2px solid #68ff2c;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+}
+
+form label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+input {
+    width: 100%;
+    margin: 2px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: #68ff2c;
+}
+
+button:hover {
+    background: rgba(214, 86, 64, 1);
+}
+
+@media (max-width: 600px) {
+
+
+    .container {
+        width: 100%;
+        max-width: 750px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    form {
+        width: 300px;
+        margin: 20px;
+    }
+
+    .login {
+        width: 400px;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .right img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    form {
+        margin: 20px 10px;
+        /* Adjust margins for smaller screens */
+    }
+}
