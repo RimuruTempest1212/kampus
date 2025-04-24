@@ -31,7 +31,7 @@ CREATE TABLE `jenis_beasiswa` (
   `pk_jenis_beasiswa_id` int NOT NULL,
   `jenis_beasiswa` varchar(50) NOT NULL,
   `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jenis_beasiswa`
@@ -52,9 +52,9 @@ INSERT INTO `jenis_beasiswa` (`pk_jenis_beasiswa_id`, `jenis_beasiswa`, `keteran
 CREATE TABLE `login` (
   `pk_login_id` int NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
@@ -76,7 +76,7 @@ CREATE TABLE `mahasiswa` (
   `jenis_kelamin` enum('L','P') NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_hp` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -90,9 +90,9 @@ CREATE TABLE `pendaftaran` (
   `semester` int NOT NULL,
   `berkas` varchar(200) NOT NULL,
   `fk_jenis_beasiswa_id` int NOT NULL,
-  `status_ajuan` enum('belum di verifikasi','Diverifikasi','lulus','gagal') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `status_ajuan` enum('belum di verifikasi','Diverifikasi','lulus','gagal') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ipk` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -111,7 +111,7 @@ CREATE TABLE `transkrip_nilai` (
   `nilai_semester7` int NOT NULL,
   `nilai_semester8` int NOT NULL,
   `fk_mahasiswa_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transkrip_nilai`

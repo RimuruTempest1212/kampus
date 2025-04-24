@@ -99,7 +99,7 @@ endif;
 	?>
 
 	<div class="judul-sekolah">
-		
+		<a href="<?= base_url('Beasiswa/home') ?>" class="btn btn-link text-black"><i class="fas fa-arrow-left"></i> Back to Home</a>
 		<h1 class="text-center mb-4">Welcome</h1>
 		<!-- <img src="assets/img/logo.png" alt="Logo Sekolah" class="logo-sekolah"> -->
 	</div>
@@ -116,16 +116,7 @@ endif;
 					<label for="password">Password</label>
 					<input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
 				</div>
-				<div class="d-flex gap-3">
-				<a href="<?= base_url('Beasiswa/home') ?>" class="btn btn-link text-blue">
-					<i class="fas fa-arrow-left"></i> Back to Home
-				</a>
-				<a href="<?= base_url('#') ?>" class="btn btn-link text-danger">
-					<i class="fas fa-arrow-right"></i> Forgot Password
-				</a>
-			</div>
-				<button type="submit" class="btn btn-success btn-block">Login</button>
-				<button type="submit" class="btn btn-primary btn-block">Create Account</button>
+				<button type="submit" class="btn btn-primary btn-block">Login</button>
 			</form>
 		</div>
 	</div>
